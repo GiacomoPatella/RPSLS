@@ -1,0 +1,102 @@
+<!doctype>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/rockpaper.css">
+    <title>Rock Paper Scissors Lizard Spock</title>
+
+    <body>
+    <div id="bg">
+      <div class='tableBox'>
+
+          <table border="0">
+            <tr class='gestures'>
+              <td class='rock'>ROCK</td>
+              <td class='paper'>PAPER</td>
+              <td class='scissors'>SCISSORS</td>
+              <td class='lizard'>LIZARD</td>
+              <td class='spock'>SPOCK</td>
+            </tr>
+            <tr class='choices'>
+              <td><img class='circle' src="images/rock.png" data-pick='rock'></td>
+              <td><img class='circle' src="images/paper.png" data-pick='paper'></td>
+              <td><img class='circle' src="images/scissors.png" data-pick='scissors'></td>
+              <td><img class='circle' src="images/lizard.png" data-pick='lizard'></td>
+              <td><img class='circle' src="images/spock.png" data-pick='spock'></td>
+            </tr>
+          </table>
+
+          <!-- modal here -->
+
+          <a id="open-rules" href="#">RULES</a>
+          <a id="open-video" href="#">VIDEO</a>
+
+          <div id="modal1" style="display: none; position: fixed; z-index: 14; left: 50%; top: 200px; margin-left: -300px; margin-top: 0px;">
+            <p><li>Scissors cut paper
+              <li>Paper covers rock
+              <li>Rock crushes lizard
+              <li>Lizard poisons Spock
+              <li>Spock smashes scissors
+              <li>Scissors decapitate lizard
+              <li>Lizard eats paper
+              <li>Paper disproves Spock
+              <li>Spock vaporizes rock
+              <li>Rock crushes scissors</li></p>
+          </div>
+
+         <div id="modal2" style="display: none; position: fixed; z-index: 14; left: 50%; top: 200px; margin-left: -300px; margin-top: 0px;">
+            <iframe width="420" height="315" src="http://www.youtube.com/embed/iapcKVn7DdY" frameborder="0" allowfullscreen></iframe>
+         </div> 
+
+         <div id="modal3" style="display: none">
+          <h3 id="result"></h3>
+         </div>
+        <script src='http://code.jquery.com/jquery-2.0.3.js'></script>
+        <script src='lib/RockPaperScissors.js'></script>
+        <script src='plugins/jquery.easyModal.js'></script>
+        <script>
+          $(document).ready(function(){
+            var player1 = new Player('Human');
+            var player2 = new Player('Computer');
+            var game = new Game(player1, player2);
+
+            $('.choices img').on('click', function() {
+              var humanPick = $(this).data('pick');
+              // var computerPick = ['rock', 'paper', 'scissor', 'lizard', 'spock'];
+
+              player1.picks(humanPick);
+              player2.randomPick();
+
+              $('#result').text(game.winner());
+            })
+          })
+
+        </script>
+
+        <script>
+          //script for rules modal
+          $(function() {
+            $("#modal1").easyModal();
+          });
+          $("#open-rules").click(function() {
+            $("#modal1").trigger('openModal');            
+          });
+          //script for video modal
+          $(function() {
+            $("#modal2").easyModal();
+          });
+          $("#open-video").click(function() {
+            $("#modal2").trigger('openModal');            
+          });
+          //script for result modal
+          $(function() {
+            $("#modal3").easyModal();
+          });
+          $(".circle").click(function() {
+            $("#modal3").trigger('openModal');            
+          });
+
+        </script>
+      </div>
+    </body>
+  </head>
+</html>
