@@ -1,8 +1,28 @@
 html {
-  background-color: lightyellow;
+    background: lightYellow;
+    animation: fading 25s infinite;
+   -webkit-animation: fading 25s infinite;
 }
 
-body {
+@keyframes fading {
+    0%   { background: lightYellow; }
+    40%  { background: paleGreen; }
+    75%  { background: paleTurquoise; }
+    100% { background: lightYellow; }
+}
+
+@-webkit-keyframes fading {
+    0%   { background: lightYellow; }
+    40%  { background: paleGreen; }
+    75%  { background: paleTurquoise; }
+    100% { background: lightYellow; }
+}
+
+h3 {
+  font: bold 25px Helvetica, sans-serif;
+}
+
+.container {
   max-width: 800px;
   margin: 0 auto 0 auto;
 }
@@ -15,25 +35,6 @@ body {
   transition: opacity 0.5s;
 }
 
-#modal1 {
-  width: 350px;
-  text-align: left;
-  background-color: coral;
-  color: whiteSmoke;
-  padding: 30px;
-  font-family: Helvetica, sans-serif;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.4);
-}
-
-#modal3 {
-  width: 450px;
-  text-align: center;
-  background-color: cadetBlue;
-  color: whiteSmoke;
-  padding: 30px;
-  font-family: Helvetica, sans-serif;
-/*  text-shadow: 0 1px 0 rgba(0,0,0,0.4);
-*/}
 
 img:hover {
   opacity: 1;
@@ -60,4 +61,13 @@ td {
   margin: 0 auto;
   font: bold 25px Helvetica, sans-serif;
   text-align: center;
+}
+
+.menu {
+  width: 150px;
+  margin: 100 auto;
+  text-align: center;
+  text-decoration: none;
+  color: deepPink;
+  font: bold 20px Helvetica, sans-serif;
 }

@@ -1,12 +1,13 @@
 <!doctype>
 <html>
+<div class="fadechange">
   <head>
     <link rel="stylesheet" type="text/css" href="css/rockpaper.css">
-    <link rel="stylesheet" type="text/css" href="css/avgrund.css">
+    <link rel="stylesheet" href="css/avgrund.css">
     <title>Rock Paper Scissors Lizard Spock</title>
 
     <body>
-    <div id="bg">
+    <div class="container">
       <div class='tableBox'>
 
           <table border="0">
@@ -26,31 +27,10 @@
             </tr>
           </table>
 
-          <!-- modal here -->
-
-          <a id="open-rules" href="#">RULES</a>
-          <a id="open-video" href="#">VIDEO</a>
-
-          <div id="modal1" style="display: none">
-            <p><li>Scissors cut paper
-              <li>Paper covers rock
-              <li>Rock crushes lizard
-              <li>Lizard poisons Spock
-              <li>Spock smashes scissors
-              <li>Scissors decapitate lizard
-              <li>Lizard eats paper
-              <li>Paper disproves Spock
-              <li>Spock vaporizes rock
-              <li>Rock crushes scissors</li></p>
+          <div class="menu">
+            <a id="rules" href="#">RULES</a>
+            <a id="video" href="#">VIDEO</a>
           </div>
-
-         <div id="modal2" style="display: none">
-            <iframe width="640" height="480" src="http://www.youtube.com/embed/iapcKVn7DdY" frameborder="0" allowfullscreen></iframe>
-         </div> 
-
-         <div id="modal3" style="display: none">
-          <h3 id="result"></h3>
-         </div>
 
         <script src='http://code.jquery.com/jquery-2.0.3.js'></script>
         <script src='lib/RockPaperScissors.js'></script>
@@ -67,17 +47,64 @@
               player1.picks(humanPick);
               player2.randomPick();
 
-              $('#result').text(game.winner());
+              $('#result').off('click')
+              $('#result').avgrund({
+                width: 320,
+                height: 100,
+                holderClass: 'results',
+                onBlurContainer: '.container',
+                holderClass: 'results',
+                template: game.winner()
+              });
+              $('#result').click();
             })
 
             //avgrund modal: insert text or div under template: within the script
+            $('#rules').avgrund({
+              width: 420,
+              height: 315,
+              holderClass: 'pink',
+              onBlurContainer: '.container',
+              template: $('#modal-rules').html()
+            });
 
-            
-          });
+            $('#video').avgrund({
+              width: 420,
+              height: 315,
+              holderClass: 'vid',
+              onBlurContainer: '.container',
+              template: $('#modal-video').html()
+            });            
 
-
+          });            
         </script>
       </div>
+
+          <!-- DIVS FOR MODAL HERE -->
+
+          <div id="modal-rules" style="display: none">
+            <p><li>Scissors cut paper
+              <li>Paper covers rock
+              <li>Rock crushes lizard
+              <li>Lizard poisons Spock
+              <li>Spock smashes scissors
+              <li>Scissors decapitate lizard
+              <li>Lizard eats paper
+              <li>Paper disproves Spock
+              <li>Spock vaporizes rock
+              <li>Rock crushes scissors</li></p>
+          </div>
+
+
+          <div id="modal-video" style="display: none">
+            <iframe width="420" height="315" src="http://www.youtube.com/embed/iapcKVn7DdY" frameborder="0" allowfullscreen></iframe>
+          </div> 
+
+          <div id="modal-result" style="display: none">
+            <h3 id="result"></h3>
+          </div>
+
     </body>
   </head>
+  </div>
 </html>
