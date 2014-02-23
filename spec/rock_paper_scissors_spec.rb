@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative '../lib/rock_paper_scissors'
+require_relative '../rock_paper_scissors'
 
 describe 'Rock-Paper-Scissors' do
 
